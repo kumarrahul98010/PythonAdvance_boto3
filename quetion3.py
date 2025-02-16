@@ -22,3 +22,5 @@ if __name__ == "__main__":
     regions = get_billed_regions()
     print("Billed regions are: ")
     print(regions if regions else "No billed regions found.")
+
+
