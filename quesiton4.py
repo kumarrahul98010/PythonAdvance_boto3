@@ -30,7 +30,7 @@ def check_mfa_status_for_users(iam_client):
     write_to_csv('iam_users_mfa_status.csv', ['IAMUserName', 'MFAEnabled'], results)
 
 def check_security_groups_for_public_access(ec2_client):
-    """Check security groups for public access on ports 22, 80, 443."""
+    
     security_groups = ec2_client.describe_security_groups()['SecurityGroups']
     results = []
 
@@ -54,18 +54,18 @@ def check_unused_ec2_key_pairs(ec2_client):
     write_to_csv('unused_ec2_key_pairs.csv', ['KeyName'], results)
 
 def write_to_csv(filename, headers, data):
-    """Write data to a CSV file."""
+   
     with open(filename, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(headers)
         writer.writerows(data)
 
 def main():
-    # Initialize Boto3 clients
+   
     iam_client = boto3.client('iam')
     ec2_client = boto3.client('ec2')
 
-    # Perform security checks
+  
     check_iam_roles_for_admin_access(iam_client)
     check_mfa_status_for_users(iam_client)
     check_security_groups_for_public_access(ec2_client)
