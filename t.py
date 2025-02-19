@@ -5,11 +5,11 @@ client = session.client(service_name="ec2")
 
 all_regions = client.describe_regions()
 
-#print.pprint(all_regions['Regions'])
+
 list_of_Regions = []
 
 for each_reg in all_regions['Regions']:
-    #print(each_reg['RegionName'])
+  
     list_of_Regions.append(each_reg['RegionName'])
 
 print(list_of_Regions)
